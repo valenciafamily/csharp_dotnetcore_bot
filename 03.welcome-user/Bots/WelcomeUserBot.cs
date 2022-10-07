@@ -106,72 +106,86 @@ namespace Microsoft.BotBuilderSamples
                     break;
                 case "expenses":
                     await SendExpenseQuestionAsync(turnContext, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "");
                     break;
                 case "create expense":
-                    //  await SendCreateExpensesCardAsync(turnContext, cancellationToken);
+                    
                     var createExpense = AdaptiveCardAttachment("createExpense.json", "");
                     var createExpenseresponse = MessageFactory.Attachment(createExpense);
                     await turnContext.SendActivityAsync(createExpenseresponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "expenses");
 
                     break;
                 case "edit expense":
                     var editExpense = AdaptiveCardAttachment("editExpense.json", "");
                     var editExpensereponse = MessageFactory.Attachment(editExpense);
                     await turnContext.SendActivityAsync(editExpensereponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "expenses");
                     break;
 
                 case "timesheet":
                     await SendTimesheetQuestionAsync(turnContext, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "");
                     break;
                 case "contact support":
                     var contactSupport = AdaptiveCardAttachment("contactSupport.json", "");
                     var contactSupportreponse = MessageFactory.Attachment(contactSupport);
                     await turnContext.SendActivityAsync(contactSupportreponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "");
                     break;
                 case "add/edit time":
                     var addEditTime = AdaptiveCardAttachment("addEditTimesheet.json", "timesheet");
                     var addEditTimereponse = MessageFactory.Attachment(addEditTime);
                     await turnContext.SendActivityAsync(addEditTimereponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "timesheet");
                     break;
                 case "report incident":
                     var reportIncident = AdaptiveCardAttachment("reportIncident.json", "timesheet");
                     var reportIncidentreponse = MessageFactory.Attachment(reportIncident);
                     await turnContext.SendActivityAsync(reportIncidentreponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "timesheet");
                     break;
                 case "submit timesheet":
                     var submitTimesheet = AdaptiveCardAttachment("submitTimesheet.json", "timesheet");
                     var submitTimesheetresponse = MessageFactory.Attachment(submitTimesheet);
                     await turnContext.SendActivityAsync(submitTimesheetresponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "timesheet");
                     break;
                 case "preference":
                     await SendPreferenceQuestionAsync(turnContext, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "");
                     break;
                 case "work preference":
                     var wotkPreference = AdaptiveCardAttachment("workPreference.json", "preference");
                     var wotkPreferenceresponse = MessageFactory.Attachment(wotkPreference);
                     await turnContext.SendActivityAsync(wotkPreferenceresponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken,"preference");
                     break;
                 case "specialties":
                     var specialties = AdaptiveCardAttachment("specialties.json", "preference");
                     var specialtiesresponse = MessageFactory.Attachment(specialties);
                     await turnContext.SendActivityAsync(specialtiesresponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "preference");
                     break;
                 case "licenses":
                     var licenses = AdaptiveCardAttachment("licenses.json", "preference");
                     var licensesresponse = MessageFactory.Attachment(licenses);
                     await turnContext.SendActivityAsync(licensesresponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "preference");
                     break;
 
                 case "reset password":
                     var resetpassword = AdaptiveCardAttachment("resetPassword.json", "preference");
                     var resetpasswordresponse = MessageFactory.Attachment(resetpassword);
                     await turnContext.SendActivityAsync(resetpasswordresponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "preference");
                     break;
 
                 case "edit email address":
                     var editemail = AdaptiveCardAttachment("editEmail.json", "preference");
                     var editemailresponse = MessageFactory.Attachment(editemail);
                     await turnContext.SendActivityAsync(editemailresponse, cancellationToken);
+                    await SuggestedActions(turnContext, cancellationToken, "preference");
                     break;
 
                 default:
@@ -250,8 +264,8 @@ namespace Microsoft.BotBuilderSamples
 
                    new CardAction(ActionTypes.MessageBack, "Expenses", null, "Expenses", "Expenses", "timesheet"),
                     new CardAction(ActionTypes.MessageBack, "Timesheet", null, "Timesheet", "Timesheet", "Timesheet"),
-                    new CardAction(ActionTypes.OpenUrl, "Preference", null, "Preference", "Preference", "Preference"),
-                    new CardAction(ActionTypes.OpenUrl, "Other", null, "Learn how to deploy", "Learn how to deploy", "https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0"),
+                    new CardAction(ActionTypes.MessageBack, "Preference", null, "Preference", "Preference", "Preference"),
+                    new CardAction(ActionTypes.MessageBack, "Contact Support", null, "Contact Support", "Contact Support"),
                 },
 
             };
@@ -329,7 +343,7 @@ namespace Microsoft.BotBuilderSamples
         {
             var card = new HeroCard
             {
-                Title = "Timesheet Page",
+                Title = "Peference Page",
                 Text = @"How can I help you? We have options listed for you!",
                 Buttons = new List<CardAction>()                {
 
@@ -353,6 +367,59 @@ namespace Microsoft.BotBuilderSamples
 
 
 
+        }
+
+        private static async Task SuggestedActions(ITurnContext turnContext, CancellationToken cancellationToken, string menuOption)
+        {
+            var menuopt = "";
+
+            switch (menuOption)
+            {
+                case "preference":
+                    menuopt = "Preference Menu";
+                    break;
+                case "timesheet":
+                    menuopt = "Timesheet Menu";
+                    break;
+                case "expenses":
+                    menuopt = "Expense Menu";
+                    break;
+                default:
+                    menuopt = "";
+                    break;
+            }
+
+
+            var reply = MessageFactory.Text("Other Options:");
+
+            if (!string.IsNullOrEmpty(menuopt))
+            {
+
+                reply.SuggestedActions = new SuggestedActions()
+                {
+                    Actions = new List<CardAction>()
+                        {
+                            new CardAction() { Title = "Main Menu", Type = ActionTypes.MessageBack, Text = "intro", Value = "intro" },
+                            new CardAction() { Title = menuopt, Type = ActionTypes.MessageBack,Text = menuOption , Value = menuOption },
+                        },
+                };
+
+            }
+            else
+            {
+
+                reply.SuggestedActions = new SuggestedActions()
+                {
+                    Actions = new List<CardAction>()
+                        {
+                           new CardAction() { Title = "Main Menu", Type = ActionTypes.MessageBack, Text = "intro", Value = "intro" }
+                           
+                        },
+                };
+
+            }
+
+            await turnContext.SendActivityAsync(reply, cancellationToken);
         }
 
     }
