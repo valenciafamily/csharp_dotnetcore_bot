@@ -80,11 +80,11 @@ namespace Microsoft.BotBuilderSamples
                     if (didBotWelcomeUser.DidBotWelcomeUser == false)
                     {
                         didBotWelcomeUser.DidBotWelcomeUser = true;
-                        //await SendIntroQuestionAsync(turnContext, cancellationToken);
+                        await SendIntroQuestionAsync(turnContext, cancellationToken);
 
-                        var welcomeCard = AdaptiveCardAttachment("welcomeCard.json", "");
-                        var welcomeCardresponse = MessageFactory.Attachment(welcomeCard);
-                        await turnContext.SendActivityAsync(welcomeCardresponse, cancellationToken);
+                        //var welcomeCard = AdaptiveCardAttachment("welcomeCard.json", "");
+                        //var welcomeCardresponse = MessageFactory.Attachment(welcomeCard);
+                        //await turnContext.SendActivityAsync(welcomeCardresponse, cancellationToken);
 
                     }
 
