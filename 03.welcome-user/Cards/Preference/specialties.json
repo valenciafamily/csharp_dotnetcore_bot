@@ -18,6 +18,10 @@
           "width": "stretch",
           "items": [
             {
+              "type": "Image",
+              "url": "https://lh3.googleusercontent.com/pw/AL9nZEW3y_tIFMTnBxTrtKOKHWV82EvIx2f_rKcutw7vVulx60dzv-ups-Y8b87CGjJ_n2W6AjzeIzzIajBrQta2Y_4vNDTYLJdoFabhELJmiAf9t3p5XqM20bplFZOSc54mrzlkWzl8rOXVW6U1xHbR6BxYFQ=w1346-h655-no?authuser=1"
+            },
+            {
               "type": "TextBlock",
               "text": "From Profile->Specialties tab, Add/Edit/Delete your specialties ",
               "wrap": true
@@ -25,7 +29,7 @@
           ],
           "selectAction": {
             "type": "Action.OpenUrl",
-            "url": "https://qa.jclttime.com/provider/expense/0"
+            "url": "https://lh3.googleusercontent.com/pw/AL9nZEW3y_tIFMTnBxTrtKOKHWV82EvIx2f_rKcutw7vVulx60dzv-ups-Y8b87CGjJ_n2W6AjzeIzzIajBrQta2Y_4vNDTYLJdoFabhELJmiAf9t3p5XqM20bplFZOSc54mrzlkWzl8rOXVW6U1xHbR6BxYFQ=w1346-h655-no?authuser=1"
           }
         }
       ]

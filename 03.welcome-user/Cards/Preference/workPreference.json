@@ -18,6 +18,10 @@
           "width": "stretch",
           "items": [
             {
+              "type": "Image",
+              "url": "https://lh3.googleusercontent.com/pw/AL9nZEXKdffBNICLjJcbNDc9wbqNoXYVNtBl6hAPBLTVBS3Qjnl4IvXVFMrAeS2Yu4WcdS3uW9Tv34tbaSsw5dBGxh9g2zQB9vhHOfXggQ8TF-nRDqEvC61UyCsOCA1QtkcmL8PJXC98xuGimxvIqmG0w1sk0w=w1340-h646-no?authuser=1"
+            },
+            {
               "type": "TextBlock",
               "text": "From Profile -> Work preference tab, update you job type, Work setting, Coverage, Hourly rate, schedule. ",
               "wrap": true
@@ -25,7 +29,7 @@
           ],
           "selectAction": {
             "type": "Action.OpenUrl",
-            "url": "https://qa.jclttime.com/provider/expense/0"
+            "url": "https://lh3.googleusercontent.com/pw/AL9nZEXKdffBNICLjJcbNDc9wbqNoXYVNtBl6hAPBLTVBS3Qjnl4IvXVFMrAeS2Yu4WcdS3uW9Tv34tbaSsw5dBGxh9g2zQB9vhHOfXggQ8TF-nRDqEvC61UyCsOCA1QtkcmL8PJXC98xuGimxvIqmG0w1sk0w=w1340-h646-no?authuser=1"
           }
         }
       ]

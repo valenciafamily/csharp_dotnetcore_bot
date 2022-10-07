@@ -18,6 +18,10 @@
           "width": "stretch",
           "items": [
             {
+              "type": "Image",
+              "url": "https://lh3.googleusercontent.com/pw/AL9nZEUV4OXGo1rswxetgSrHYnyp-L1NLwaq1lBjo2kAenpOMt8gQWppw5RzN9dBqc3D6tk5PnkvFfgxi6DfC37Of_ZPC7uw4DgSrrAcYYL2EUqRjtb8uvlnZzOEJydhAMDB0nrLX2GQRqZ_wV0wK6JOvLBZoQ=w1346-h629-no?authuser=1"
+            },
+            {
               "type": "TextBlock",
               "text": "From Profile->Licenses tab, Add/Edit/Delete your Licenses ",
               "wrap": true
@@ -25,7 +29,7 @@
           ],
           "selectAction": {
             "type": "Action.OpenUrl",
-            "url": "https://qa.jclttime.com/provider/expense/0"
+            "url": "https://lh3.googleusercontent.com/pw/AL9nZEUV4OXGo1rswxetgSrHYnyp-L1NLwaq1lBjo2kAenpOMt8gQWppw5RzN9dBqc3D6tk5PnkvFfgxi6DfC37Of_ZPC7uw4DgSrrAcYYL2EUqRjtb8uvlnZzOEJydhAMDB0nrLX2GQRqZ_wV0wK6JOvLBZoQ=w1346-h629-no?authuser=1"
           }
         }
       ]

@@ -11,6 +11,10 @@
       "horizontalAlignment": "Center"
     },
     {
+      "type": "Image",
+      "url": "https://lh3.googleusercontent.com/pw/AL9nZEWK0l8foz9fg8HfRRSeO4IzJIk9EeFDbnUs51EFs7OnPXzbarFXXW806WyzEpta6FsaNIyVF5RP3K_2YuhvteXJyz5FnrX9cj2wv6ZmwpxnsO-xqKPfcIakmUr1-T--bfO0QhkD0F9jH7kbMXa3QgxlBw=w1273-h606-no?authuser=1"
+    },
+    {
       "type": "ColumnSet",
       "columns": [
         {
@@ -25,7 +29,7 @@
           ],
           "selectAction": {
             "type": "Action.OpenUrl",
-            "url": "https://qa.jclttime.com/provider/expense/0"
+            "url": "https://lh3.googleusercontent.com/pw/AL9nZEWK0l8foz9fg8HfRRSeO4IzJIk9EeFDbnUs51EFs7OnPXzbarFXXW806WyzEpta6FsaNIyVF5RP3K_2YuhvteXJyz5FnrX9cj2wv6ZmwpxnsO-xqKPfcIakmUr1-T--bfO0QhkD0F9jH7kbMXa3QgxlBw=w1273-h606-no?authuser=1"
           }
         }
       ]
