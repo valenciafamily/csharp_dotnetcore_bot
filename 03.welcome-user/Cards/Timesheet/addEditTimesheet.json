@@ -1,0 +1,41 @@
+﻿{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.1",
+  "body": [
+    {
+      "type": "TextBlock",
+      "size": "Large",
+      "weight": "Bolder",
+      "text": "Add/Edit Time",
+      "horizontalAlignment": "Center"
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "You will see any active timesheets under Current Timesheets or Past Due Timesheets. Just click the edit button and enter your time on the correct day. When your done click the Save button. ",
+              "wrap": true
+            }
+          ],
+          "selectAction": {
+            "type": "Action.OpenUrl",
+            "url": "https://qa.jclttime.com/provider/expense/0"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "OPEN",
+      "url": "https://qa.jclttime.com/provider/timesheetList/All "
+    }
+  ]
+}

@@ -81,16 +81,7 @@ namespace Microsoft.BotBuilderSamples
                     {
                         didBotWelcomeUser.DidBotWelcomeUser = true;
                           await SendIntroQuestionAsync(turnContext, cancellationToken);
-                        // the channel should sends the user name in the 'From' object
-                        // var userName = turnContext.Activity.From.Name;
-                        //   await SendIntroQuestionAsync(turnContext, cancellationToken);
-                        //await turnContext.SendActivityAsync("You are seeing this message because this was your first message ever to this bot.", cancellationToken: cancellationToken);
-                        //await turnContext.SendActivityAsync($"It is a good practice to welcome the user and provide personal greeting. For example, welcome {userName}.", cancellationToken: cancellationToken);
-
-                        //var welcomeCard = WelcomeCardAdaptiveCardAttachment();
-                        //var response = MessageFactory.Attachment(welcomeCard);
-                        //await turnContext.SendActivityAsync(response, cancellationToken);
-
+         
                     }
 
                 }
@@ -118,13 +109,13 @@ namespace Microsoft.BotBuilderSamples
                     break;
                 case "create expense":
                     //  await SendCreateExpensesCardAsync(turnContext, cancellationToken);
-                    var createExpense = CreateExpenseAdaptiveCardAttachment();
+                    var createExpense = AdaptiveCardAttachment("createExpense.json", "");
                     var createExpenseresponse = MessageFactory.Attachment(createExpense);
                     await turnContext.SendActivityAsync(createExpenseresponse, cancellationToken);
 
                     break;
                 case "edit expense":
-                    var editExpense = EditExpenseAdaptiveCardAttachment();
+                    var editExpense = AdaptiveCardAttachment("editExpense.json", "");
                     var editExpensereponse = MessageFactory.Attachment(editExpense);
                     await turnContext.SendActivityAsync(editExpensereponse, cancellationToken);
                     break;
@@ -133,44 +124,65 @@ namespace Microsoft.BotBuilderSamples
                     await SendTimesheetQuestionAsync(turnContext, cancellationToken);
                     break;
                 case "contact support":
-                    var contactSupport = ContactSupportAdaptiveCardAttachment();
+                    var contactSupport = AdaptiveCardAttachment("contactSupport.json", "");
                     var contactSupportreponse = MessageFactory.Attachment(contactSupport);
                     await turnContext.SendActivityAsync(contactSupportreponse, cancellationToken);
                     break;
-                    ;
+                case "add/edit time":
+                    var addEditTime = AdaptiveCardAttachment("addEditTimesheet.json", "timesheet");
+                    var addEditTimereponse = MessageFactory.Attachment(addEditTime);
+                    await turnContext.SendActivityAsync(addEditTimereponse, cancellationToken);
+                    break;
+                case "report incident":
+                    var reportIncident = AdaptiveCardAttachment("reportIncident.json", "timesheet");
+                    var reportIncidentreponse = MessageFactory.Attachment(reportIncident);
+                    await turnContext.SendActivityAsync(reportIncidentreponse, cancellationToken);
+                    break;
+                case "submit timesheet":
+                    var submitTimesheet = AdaptiveCardAttachment("submitTimesheet.json", "timesheet");
+                    var submitTimesheetresponse = MessageFactory.Attachment(submitTimesheet);
+                    await turnContext.SendActivityAsync(submitTimesheetresponse, cancellationToken);
+                    break;
+                case "preference":
+                    await SendPreferenceQuestionAsync(turnContext, cancellationToken);
+                    break;
+                case "work preference":
+                    var wotkPreference = AdaptiveCardAttachment("workPreference.json", "preference");
+                    var wotkPreferenceresponse = MessageFactory.Attachment(wotkPreference);
+                    await turnContext.SendActivityAsync(wotkPreferenceresponse, cancellationToken);
+                    break;
+                case "specialties":
+                    var specialties = AdaptiveCardAttachment("specialties.json", "preference");
+                    var specialtiesresponse = MessageFactory.Attachment(specialties);
+                    await turnContext.SendActivityAsync(specialtiesresponse, cancellationToken);
+                    break;
+                case "licenses":
+                    var licenses = AdaptiveCardAttachment("licenses.json", "preference");
+                    var licensesresponse = MessageFactory.Attachment(licenses);
+                    await turnContext.SendActivityAsync(licensesresponse, cancellationToken);
+                    break;
+
+                case "reset password":
+                    var resetpassword = AdaptiveCardAttachment("resetPassword.json", "preference");
+                    var resetpasswordresponse = MessageFactory.Attachment(resetpassword);
+                    await turnContext.SendActivityAsync(resetpasswordresponse, cancellationToken);
+                    break;
+
+                case "edit email address":
+                    var editemail = AdaptiveCardAttachment("editEmail.json", "preference");
+                    var editemailresponse = MessageFactory.Attachment(editemail);
+                    await turnContext.SendActivityAsync(editemailresponse, cancellationToken);
+                    break;
+
                 default:
                     await turnContext.SendActivityAsync(WelcomeMessage, cancellationToken: cancellationToken);
                     break;
             }
-
-
                         // Save any state changes.
                         await _userState.SaveChangesAsync(turnContext, cancellationToken: cancellationToken);
         }
 
-        private static async Task SendIntroCardAsync(ITurnContext turnContext, CancellationToken cancellationToken)
-        {
-            var card = new HeroCard
-            {
-                Title = "Welcome to Bot Framework!",
-                Text = @"Welcome to Welcome Users bot sample! This Introduction card
-                         is a great way to introduce your Bot to the user and suggest
-                         some things to get them started. We use this opportunity to
-                         recommend a few next steps for learning more creating and deploying bots.",
-                Images = new List<CardImage>() { new CardImage("https://aka.ms/bf-welcome-card-image") },
-                Buttons = new List<CardAction>()
-                {
-                    new CardAction(ActionTypes.OpenUrl, "Get an overview", null, "Get an overview", "Get an overview", "https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0"),
-                    new CardAction(ActionTypes.OpenUrl, "Ask a question", null, "Ask a question", "Ask a question", "https://stackoverflow.com/questions/tagged/botframework"),
-                    new CardAction(ActionTypes.OpenUrl, "Learn how to deploy", null, "Learn how to deploy", "Learn how to deploy", "https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0"),
-                    new CardAction(ActionTypes.MessageBack, "", null, "Learn how to deploy", "Learn how to deploy", "https://photos.google.com/share/AF1QipPQPs6NpeLjOZEunG9rrDdQqpiEoLxMmDWshpuU_5QXp8WD9Nm7qhqIg8trAO8yAw/photo/AF1QipO_4VuCK5cjhrezn56qHTx9uBCs0fmzO7zayNuz?key=Mk9xUWp5dVpicFZueEh2aU9mY09mVTF5M1Y2M2dn"),
-                }
-            };
-
-            var response = MessageFactory.Attachment(card.ToAttachment());
-            await turnContext.SendActivityAsync(response, cancellationToken);
-        }
-
+   
         // Load attachment from file.
 
         private static Attachment WelcomeCardAdaptiveCardAttachment()
@@ -189,49 +201,28 @@ namespace Microsoft.BotBuilderSamples
             };
 
 
-        }
+        }      
 
-        private static Attachment CreateExpenseAdaptiveCardAttachment()
+        private static Attachment AdaptiveCardAttachment(string filename, string page)
         {
             //combine path for cross platform support
-
-            string[] paths = { ".", "Cards", "createExpense.json" };
-            var fullPath = Path.Combine(paths);
-            var pt = fullPath;
-            var adaptiveCard = File.ReadAllText(fullPath);
-            var p = adaptiveCard;
-            return new Attachment()
+            string loc = "";
+            if (page == "timesheet")
             {
-                ContentType = "application/vnd.microsoft.card.adaptive",
-                Content = JsonConvert.DeserializeObject(adaptiveCard),
-            };
-
-
-        }
-
-        private static Attachment ContactSupportAdaptiveCardAttachment()
-        {
-            //combine path for cross platform support
-
-            string[] paths = { ".", "Cards", "contactSupport.json" };
-            var fullPath = Path.Combine(paths);
-            var pt = fullPath;
-            var adaptiveCard = File.ReadAllText(fullPath);
-            var p = adaptiveCard;
-            return new Attachment()
+                loc = "Cards/Timesheet";
+            }
+            else if (page == "preference")
             {
-                ContentType = "application/vnd.microsoft.card.adaptive",
-                Content = JsonConvert.DeserializeObject(adaptiveCard),
-            };
+                loc = "Cards/Preference";
+            }
+            else
+            {
+                loc = "Cards";
+            }
 
+            string[] paths = { ".", loc, filename };
+           
 
-        }
-
-        private static Attachment EditExpenseAdaptiveCardAttachment()
-        {
-            //combine path for cross platform support
-
-            string[] paths = { ".", "Cards", "editExpense.json" };
             var fullPath = Path.Combine(paths);
             var pt = fullPath;
             var adaptiveCard = File.ReadAllText(fullPath);
@@ -259,7 +250,7 @@ namespace Microsoft.BotBuilderSamples
 
                    new CardAction(ActionTypes.MessageBack, "Expenses", null, "Expenses", "Expenses", "timesheet"),
                     new CardAction(ActionTypes.MessageBack, "Timesheet", null, "Timesheet", "Timesheet", "Timesheet"),
-                    new CardAction(ActionTypes.OpenUrl, "Preference", null, "Learn how to deploy", "Learn how to deploy", "https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0"),
+                    new CardAction(ActionTypes.OpenUrl, "Preference", null, "Preference", "Preference", "Preference"),
                     new CardAction(ActionTypes.OpenUrl, "Other", null, "Learn how to deploy", "Learn how to deploy", "https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0"),
                 },
 
@@ -302,7 +293,6 @@ namespace Microsoft.BotBuilderSamples
 
         }
 
-
         private static async Task SendTimesheetQuestionAsync(ITurnContext turnContext, CancellationToken cancellationToken)
         {
             var card = new HeroCard
@@ -312,7 +302,7 @@ namespace Microsoft.BotBuilderSamples
                 Buttons = new List<CardAction>()                {
 
                     new CardAction(ActionTypes.MessageBack, "Add/Edit Time", null, "Add/Edit Time", "Add/Edit Time", ""),
-                    new CardAction(ActionTypes.MessageBack, "Submit Timesheet ", null, "Submit Timesheet ", "Submit Timesheet ", ""),
+                    new CardAction(ActionTypes.MessageBack, "Submit Timesheet", null, "Submit Timesheet", "Submit Timesheet", ""),
                     new CardAction(ActionTypes.MessageBack, "Report Incident ", null, "Report Incident", "Report Incident", ""),
                     new CardAction(ActionTypes.MessageBack, "Contact Support", null, "Contact Support", "Contact Support", ""),
 
@@ -320,6 +310,36 @@ namespace Microsoft.BotBuilderSamples
 
 
 
+
+            };
+
+
+
+            var response = MessageFactory.Attachment(card.ToAttachment());
+
+
+
+            await turnContext.SendActivityAsync(response, cancellationToken);
+
+
+
+        }
+
+        private static async Task SendPreferenceQuestionAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+        {
+            var card = new HeroCard
+            {
+                Title = "Timesheet Page",
+                Text = @"How can I help you? We have options listed for you!",
+                Buttons = new List<CardAction>()                {
+
+                    new CardAction(ActionTypes.MessageBack, "Work Preference", null, "Work Preference", "Work Preference", ""),
+                    new CardAction(ActionTypes.MessageBack, "Specialties", null, "Specialties", "Specialties", ""),
+                    new CardAction(ActionTypes.MessageBack, "Licenses", null, "Licenses", "Licenses", ""),
+                    new CardAction(ActionTypes.MessageBack, "Reset Password ", null, "Reset password", "Reset password", ""),                    
+                    new CardAction(ActionTypes.MessageBack, "Edit Email Address", null, "Edit Email Address", "Edit Email Address", ""),
+                    new CardAction(ActionTypes.MessageBack, "Contact Support", null, "Contact Support", "Contact Support", ""),
+                },
 
             };
 

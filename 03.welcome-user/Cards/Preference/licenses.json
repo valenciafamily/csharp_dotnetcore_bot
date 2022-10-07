@@ -1,0 +1,41 @@
+﻿{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.1",
+  "body": [
+    {
+      "type": "TextBlock",
+      "size": "Large",
+      "weight": "Bolder",
+      "text": "Licenses ",
+      "horizontalAlignment": "Center"
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "From Profile->Licenses tab, Add/Edit/Delete your Licenses ",
+              "wrap": true
+            }
+          ],
+          "selectAction": {
+            "type": "Action.OpenUrl",
+            "url": "https://qa.jclttime.com/provider/expense/0"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "OPEN",
+      "url": "https://qa.jclttime.com/provider/provider-work-preferences/Licenses"
+    }
+  ]
+}
