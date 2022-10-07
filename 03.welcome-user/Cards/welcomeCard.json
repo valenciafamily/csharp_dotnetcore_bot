@@ -1,0 +1,52 @@
+﻿{
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "Image",
+      "url": "https://lh3.googleusercontent.com/pw/AL9nZEVdMJT_WpDlJSD0VrzEx-vEtN36NYuKxobObkeTHkxKm52oIOmYVeRLMTZKSW0AgnHwZ_mF6QCDifr_lJZMZAIB4QYBxm09yN1D5EbbQIcvX_XqDR4VHWPvzibJVoHtM6Q_dNXY2YdKgL-QpDAxpaX1tQ=w497-h409-no?authuser=1"
+    },
+    {
+      "type": "TextBlock",
+      "size": "Large",
+      "weight": "Bolder",
+      "text": "Welcome to Atlas",
+      "horizontalAlignment": "Center"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Hi there, how can I help you?  \nTo get started select an option from below: \n",
+      "wrap": true,
+      "size": "Medium",
+      "color": "Default"
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.1",
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Expense",
+      "text":  "hellow",
+      "data": {
+       
+          "type": "messageBack",
+          "displayText": "I clicked this button",
+          "text": "text to bots",
+          "value": ""
+        
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Timesheet"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Preferences"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Other"
+    }
+  ]
+}
