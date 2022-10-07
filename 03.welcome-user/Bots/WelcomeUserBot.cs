@@ -257,7 +257,7 @@ namespace Microsoft.BotBuilderSamples
             var card = new HeroCard
             {
                 Title = "Welcome to Atlas Solution!",
-                Text = @"Welcome! How can I help you? We have options listed for you!",
+                Text = @"Hi " + turnContext.Activity.From.Name +  ", I am JACOB How can I help you? Select any options from below or type your questions.",
                 Images = new List<CardImage>() { new CardImage("https://lh3.googleusercontent.com/pw/AL9nZEVdMJT_WpDlJSD0VrzEx-vEtN36NYuKxobObkeTHkxKm52oIOmYVeRLMTZKSW0AgnHwZ_mF6QCDifr_lJZMZAIB4QYBxm09yN1D5EbbQIcvX_XqDR4VHWPvzibJVoHtM6Q_dNXY2YdKgL-QpDAxpaX1tQ=w497-h409-no?authuser=1") },
                 Buttons = new List<CardAction>()
                 {
@@ -390,7 +390,7 @@ namespace Microsoft.BotBuilderSamples
             }
 
 
-            var reply = MessageFactory.Text("Other Options:");
+           var reply =  MessageFactory.Text("");
 
             if (!string.IsNullOrEmpty(menuopt))
             {
