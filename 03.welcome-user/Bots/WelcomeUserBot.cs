@@ -80,8 +80,12 @@ namespace Microsoft.BotBuilderSamples
                     if (didBotWelcomeUser.DidBotWelcomeUser == false)
                     {
                         didBotWelcomeUser.DidBotWelcomeUser = true;
-                          await SendIntroQuestionAsync(turnContext, cancellationToken);
-         
+                        //await SendIntroQuestionAsync(turnContext, cancellationToken);
+
+                        var welcomeCard = AdaptiveCardAttachment("welcomeCard.json", "");
+                        var welcomeCardresponse = MessageFactory.Attachment(welcomeCard);
+                        await turnContext.SendActivityAsync(welcomeCardresponse, cancellationToken);
+
                     }
 
                 }
@@ -93,7 +97,18 @@ namespace Microsoft.BotBuilderSamples
 
             // This example hardcodes specific utterances. You should use LUIS or QnA for more advance language understanding.
 
-            var text = turnContext.Activity.Text.ToLowerInvariant();
+            //var text = turnContext.Activity.Text ?? "";
+            //if (string.IsNullOrEmpty(text))
+            //{
+                
+               
+            //}
+            //else
+            //{
+             var   text = turnContext.Activity.Text.ToLowerInvariant();
+          //  }
+
+
             switch (text)
             {
                 case "hello":
@@ -102,9 +117,13 @@ namespace Microsoft.BotBuilderSamples
                     break;
                 case "intro":
                 case "help":
-                    await SendIntroQuestionAsync(turnContext, cancellationToken);
+                    //                    await SendIntroQuestionAsync(turnContext, cancellationToken);
+                    var welcomeCard = AdaptiveCardAttachment("welcomeCard.json", "");
+                    var welcomeCardresponse = MessageFactory.Attachment(welcomeCard);
+                    await turnContext.SendActivityAsync(welcomeCardresponse, cancellationToken);
                     break;
                 case "expenses":
+                case "expense":
                     await SendExpenseQuestionAsync(turnContext, cancellationToken);
                     await SuggestedActions(turnContext, cancellationToken, "");
                     break;

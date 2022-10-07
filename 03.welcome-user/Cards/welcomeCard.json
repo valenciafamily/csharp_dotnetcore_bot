@@ -3,7 +3,10 @@
   "body": [
     {
       "type": "Image",
-      "url": "https://lh3.googleusercontent.com/pw/AL9nZEVdMJT_WpDlJSD0VrzEx-vEtN36NYuKxobObkeTHkxKm52oIOmYVeRLMTZKSW0AgnHwZ_mF6QCDifr_lJZMZAIB4QYBxm09yN1D5EbbQIcvX_XqDR4VHWPvzibJVoHtM6Q_dNXY2YdKgL-QpDAxpaX1tQ=w497-h409-no?authuser=1"
+      "url": "https://lh3.googleusercontent.com/pw/AL9nZEVdMJT_WpDlJSD0VrzEx-vEtN36NYuKxobObkeTHkxKm52oIOmYVeRLMTZKSW0AgnHwZ_mF6QCDifr_lJZMZAIB4QYBxm09yN1D5EbbQIcvX_XqDR4VHWPvzibJVoHtM6Q_dNXY2YdKgL-QpDAxpaX1tQ=w497-h409-no?authuser=1",
+      "size": "Large",
+      "horizontalAlignment": "Center",
+      "separator": true
     },
     {
       "type": "TextBlock",
@@ -14,7 +17,7 @@
     },
     {
       "type": "TextBlock",
-      "text": "Hi there, how can I help you?  \nTo get started select an option from below: \n",
+      "text": "Hi User I am JACOB How can I help you? \n Select any options from below or type your questions.",
       "wrap": true,
       "size": "Medium",
       "color": "Default"
@@ -26,27 +29,23 @@
     {
       "type": "Action.Submit",
       "title": "Expense",
-      "text":  "hellow",
-      "data": {
-       
-          "type": "messageBack",
-          "displayText": "I clicked this button",
-          "text": "text to bots",
-          "value": ""
-        
-      }
+      "text": "hellow",
+      "data": "expenses"
     },
     {
       "type": "Action.Submit",
-      "title": "Timesheet"
+      "title": "Timesheet",
+      "data": "Timesheet"
     },
     {
       "type": "Action.Submit",
-      "title": "Preferences"
+      "title": "Preferences",
+      "data": "preference"
     },
     {
       "type": "Action.Submit",
-      "title": "Other"
+      "title": "Contact Support",
+      "data": "contact support"
     }
   ]
 }
